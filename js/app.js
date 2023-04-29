@@ -71,6 +71,7 @@ let Cosmetics = {
   category: 'cosmetics'
 };
 
+
 let modProducts = [];
 
 let getProto = (arr, proto) => {
@@ -91,25 +92,25 @@ arr = [
   getProto(cosmeticsProducts, Cosmetics)
 ]
 
-let renderAll = [];
+let renderArr = [];
 let newarr = [];
 
 arr.forEach(element => {
   element.map(obj => {
-    renderAll.push(`<div class="category__box>"
-      <div class="category__img">
-        <img src="img/${obj.type}.svg" alt="">
-      </div>
-      <div class="category__title">
-      <p class="title__name">Name:
-        <span> ${obj.type}</span>
-      </p>
-      <p class="title__price">Price:
-        <span> ${Array.isArray(obj.price) === true ? String(obj.price[0])+-+String(obj.price[1]) : obj.price}</span>
-      </p>
-      </div>
-      </div>`)
+    renderArr.push(`<div class="category__box">
+                <div class="category__img">
+                  <img src="img/${obj.type}.svg" alt="">
+                </div>
+          <div class="category__title">
+              <p class="title__name">Name:
+                <span> ${obj.type}</span>
+              </p>
+            <p class="title__price">Price:
+              <span> $${Array.isArray(obj.price) === true ? String(obj.price[0])+-+String(obj.price[1]) : obj.price}</span>
+            </p>
+          </div>
+        </div>`)
   })
-  document.write(`<div class="category"> ${renderAll.join(``)}</div>`);
-  renderAll.splice(0);
+  document.write(`<div class="category"> ${renderArr.join('')}</div>`);
+  renderArr.splice(0);
 });
